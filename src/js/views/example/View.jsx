@@ -5,14 +5,11 @@ import { connect } from 'react-redux'
 // This is i18n and i10n
 import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl'
 
-import LazyLoading from '../../common/components/LazyLoading'
+import LazyExample from '../../common/components/Example/Example'
 import { actions as exampleActions } from '../../redux/modules/example'
 import { exampleSelector } from '../../redux/selectors/exampleSelector'
 import { ExampleWithError } from '../../common/components/Example';
 import { ErrorBoundary } from '../../common/components/Utilities';
-
-// This is lazy loading example
-const LazyExample = LazyLoading(() => import('../../common/components/Example/Example'));
 
 class ExampleView extends Component {
   static propTypes = {

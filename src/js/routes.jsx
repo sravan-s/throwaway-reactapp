@@ -1,37 +1,17 @@
 import React from 'react'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
 
-import LazyLoading from 'common/components/LazyLoading'
-
-import styles from '../style/index.css'
-
-// This is show case how you can lazy loading component
-const ExampleRouteHandler = LazyLoading(() => import('views/example'))
-const Header = LazyLoading(() => import('common/components/Header/Header'))
-
-// Please remove that, it is an example
-const JustAnotherPage = () => (
-  <div>
-    <h2>This is Just Another Page</h2>
-    <p>
-      Please remove this from your route, it is just to show case basic setup
-      for router.
-    </p>
-  </div>
-)
-
-// This show case how you can access routing info in your component
-const HeaderWithRouter = withRouter((props) => <Header {...props} />)
+const Page1 = () => (<div>page una</div>);
+const Page2 = () => (<div>page dos</div>);
+const Page3 = () => (<div>page tres</div>);
 
 module.exports = (
-  <div className={styles.container}>
-    <HeaderWithRouter />
-    <hr />
-    <div className={styles.content}>
+  <div>
+    <div>
       <Switch>
-        <Route exact path="/" component={ExampleRouteHandler} />
-        <Route path="/page" component={JustAnotherPage} />
-        <Route path="*" component={ExampleRouteHandler} />
+        <Route exact path="/" component={Page1} />
+        <Route path="/page" component={Page2} />
+        <Route path="*" component={Page3} />
       </Switch>
     </div>
   </div>

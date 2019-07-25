@@ -1,10 +1,9 @@
-import Loadable from 'react-loadable'
+import React from 'react';
 
-import Loading from './Loading'
-
-export const create = (loader) => Loadable({
-  loader,
-  loading: Loading,
-})
+export const create = () => (
+  <div>
+    Alo
+  </div>
+);
 
 export default create

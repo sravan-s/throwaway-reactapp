@@ -4,6 +4,7 @@ import path from 'path';
 import webpack from 'webpack';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import config from 'config';
+const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 
 // Please read the following link if
 // you have no idea how to use this feature
@@ -131,6 +132,8 @@ export const JS_SOURCE = config.get('jsSourcePath');
 export default {
   output: {
     path: path.join(__dirname, 'docroot'),
+    globalObject: "this",
+    libraryTarget: 'umd',
   },
   performance: {
     hints: process.env.NODE_ENV === 'production' ? "warning" : false
@@ -152,6 +155,7 @@ export default {
   plugins: [
     new webpack.IgnorePlugin(/vertx/), // https://github.com/webpack/webpack/issues/353
     new CaseSensitivePathsPlugin(),
+    new StaticSiteGeneratorPlugin({})
   ],
   module: {
     rules: COMMON_LOADERS,
